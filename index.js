@@ -29,6 +29,13 @@ app.get('/redirect', function(req,res) {
     return;
 }); 
 
+app.all('/*', function(req,res) {
+    console.log(req.params);
+    console.log(req.url);
+    console.log(req.body);
+    return;
+}); 
+
 app.listen(PORT, function(err) {
     if (err) {
         console.log(err);
