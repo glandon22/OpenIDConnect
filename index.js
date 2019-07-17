@@ -21,7 +21,9 @@ app.get('/google-auth', function(req,res) {
 });
 
 app.get('/redirect', function(req,res) {
+    console.log(req.url);
     console.log(req.params);
+    console.log(req.query);
     return;
 }); 
 
