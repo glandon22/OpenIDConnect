@@ -23,6 +23,11 @@ app.get('/google-auth', function(req,res) {
     &nonce=${uuidv4()}`;
 });
 
+app.get('/redirect', function(req,res) {
+    console.log(req.params);
+    return;
+}); 
+
 app.listen(PORT, function(err) {
     if (err) {
         console.log(err);
