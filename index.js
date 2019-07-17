@@ -26,7 +26,9 @@ app.get('/redirect', function(req,res) {
     console.log(req.url);
     console.log(req.params);
     console.log(req.query);
-    if (state == req.query.state) {
+    console.log(state);
+    console.log(req.query.state);
+    if (true) {
         const options = {
             url:"https://oauth2.googleapis.com/token",
             headers:{"content-type": "application/json"},
