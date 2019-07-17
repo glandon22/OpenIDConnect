@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));  
 
 app.get('/google-auth', function(req,res) {
+    console.log("hitting auth flow");
     uuid = uuidv4();
     const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${config.clientID}\
     &response_type=code\
