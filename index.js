@@ -26,6 +26,7 @@ app.get('/redirect', function(req,res) {
     console.log(req.url);
     console.log(req.params);
     console.log(req.query);
+    console.log(req.body);
     console.log(state);
     console.log(req.query.state);
     if (true) {
@@ -33,7 +34,7 @@ app.get('/redirect', function(req,res) {
             "code": req.query.code,
             "client_id": config.clientID,
             "client_secret": config.secret,
-            "redirect_uri": config.redirect_auth,
+            "redirect_uri": config.redirect,
             "grant_type": "authorization_code"
         });
         const options = {
