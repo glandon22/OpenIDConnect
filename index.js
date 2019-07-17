@@ -58,7 +58,13 @@ app.get('/redirect', function(req,res) {
         return;
     }
     return;
-}); 
+});
+
+app.get('/authenticated', function(req,res) {
+    console.log(url);
+    console.log(req.body);
+    res.status(200).send('ok');
+});
 
 app.all('/*', function(req,res) {
     console.log(req.params);
