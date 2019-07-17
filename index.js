@@ -29,16 +29,17 @@ app.get('/redirect', function(req,res) {
     console.log(state);
     console.log(req.query.state);
     if (true) {
+        const body = JSON.stringify({
+            "code": req.query.code,
+            "client_id": config.clientID,
+            "client_secret": config.secret,
+            "redirect_uri": encodeURIComponent(config.redirect),
+            "grant_type": "authorization_code"
+        });
         const options = {
             url:"https://oauth2.googleapis.com/token",
             headers:{"content-type": "application/json"},
-            body: {
-                "code": req.query.code,
-                "client_id": config.clientID,
-                "client_secret": config.secret,
-                "redirect_uri": encodeURIComponent(config.redirect),
-                "grant_type": "authorization_code"
-            } 
+            body: body
         };
         request.post(options, function(err, res) {
             if (err) {
