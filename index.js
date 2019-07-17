@@ -33,7 +33,7 @@ app.get('/redirect', function(req,res) {
             "code": req.query.code,
             "client_id": config.clientID,
             "client_secret": config.secret,
-            "redirect_uri": encodeURIComponent(config.redirect),
+            "redirect_uri": config.redirect_auth,
             "grant_type": "authorization_code"
         });
         const options = {
