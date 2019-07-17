@@ -22,6 +22,7 @@ app.get('/google-auth', function(req,res) {
     &state=${uuid}\
     &login_hint="test"\
     &nonce=${uuidv4()}`;
+    res.status(200).redirect(url);
 });
 
 app.get('/redirect', function(req,res) {
