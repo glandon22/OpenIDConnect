@@ -17,7 +17,7 @@ app.get('/google-auth', function(req,res) {
     console.log("hitting auth flow");
     uuid = uuidv4();
     state = uuidv4();
-    const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${config.clientID}&response_type=code&scope=openid%20email&redirect_uri=${encodeURIComponent(config.redirect)}&state=${uuid}&login_hint="test"&nonce=${state}`;
+    const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${config.clientID}&response_type=code&scope=openid%20email%20profile&redirect_uri=${encodeURIComponent(config.redirect)}&state=${uuid}&login_hint="test"&nonce=${state}`;
     console.log(url);
     res.status(200).redirect(url);
 });
