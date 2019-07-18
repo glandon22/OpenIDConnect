@@ -46,7 +46,7 @@ app.get('/redirect', function(req,res) {
             else {
                 let data = response.body['id_token'];
                 console.log(data);
-                res.render('success', data);
+                res.render('success', {data: data});
             }
             return;
         });
