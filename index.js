@@ -25,6 +25,7 @@ app.get('/google-auth', function(req,res) {
 });
 
 app.get('/redirect', function(req,res) {
+    let token = "";
     if (true) {
         const body = JSON.stringify({
             "code": req.query.code,
@@ -44,9 +45,22 @@ app.get('/redirect', function(req,res) {
             }
 
             else {
-                let data = response.body;
-                console.log(data);
-                res.render('success', {data: data});
+                token = JSON.parse(response.body);
+                const options1 = {
+                    url:"https://openidconnect.googleapis.com/v1/userinfo",
+                    headers:{"Authoriztion": "Token " + token.access_token} 
+               };
+                request.get(options1, function(err, response1) {
+                    if (err) {
+                        console.log(err);
+                    }
+        
+                    else {
+                        let data = response1.body;
+                        res.render('success', {data: data});
+                    }
+                    return;
+                });
             }
             return;
         });
