@@ -48,7 +48,7 @@ app.get('/redirect', function(req,res) {
             }
 
             else {
-                console.log(res);
+                console.log('req');
             }
             return;
         });
@@ -68,7 +68,7 @@ app.get('/authenticated', function(req,res) {
 });
 
 app.all('/*', function(req,res) {
-    console.log(req.params);
+    console.log('here');
     console.log(req.url);
     console.log(req.body);
     return;
