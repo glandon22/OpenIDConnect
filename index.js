@@ -24,12 +24,9 @@ app.get('/google-auth', function(req,res) {
 
 app.get('/redirect', function(req,res) {
     console.log(req.url);
-    console.log(req.params);
     console.log(req.query);
-    console.log(req.body);
-    console.log(state);
-    console.log(req.query.state);
-    if (true) {
+
+    if (req.query.prompt === 'consent') {
         const body = JSON.stringify({
             "code": req.query.code,
             "client_id": config.clientID,
@@ -52,6 +49,10 @@ app.get('/redirect', function(req,res) {
             }
             return;
         });
+    }
+
+    else if (req.query.prompt === 'none') {
+        console.log(req.body);
     }
 
     else {
