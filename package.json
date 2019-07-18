@@ -18,7 +18,6 @@
   "homepage": "https://github.com/glandon22/OpenIDConnect#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "ejs": "^2.6.2",
     "express": "^4.17.1",
     "request": "^2.88.0",
     "uuid": "^3.3.2"

@@ -6,7 +6,6 @@ const path = require('path');
 const uuidv4 = require('uuid/v4');
 const request = require('request');
 const config = require('./config');
-const ejs = require('ejs');
 let uuid = "";
 let state = "";
 
