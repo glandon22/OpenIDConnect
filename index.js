@@ -44,7 +44,7 @@ app.get('/redirect', function(req,res) {
             }
 
             else {
-                let data = JSON.stringify(response.body);
+                let data = response.body;
                 res.render('public/success', data);
             }
             return;
