@@ -13,6 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));  
 
+app.set('view engine', 'ejs');
+
 app.get('/google-auth', function(req,res) {
     console.log("hitting auth flow");
     uuid = uuidv4();
@@ -23,12 +25,6 @@ app.get('/google-auth', function(req,res) {
 });
 
 app.get('/redirect', function(req,res) {
-    console.log(req.url);
-    console.log(req.params);
-    console.log(req.query);
-    console.log(req.body);
-    console.log(state);
-    console.log(req.query.state);
     if (true) {
         const body = JSON.stringify({
             "code": req.query.code,
@@ -48,7 +44,8 @@ app.get('/redirect', function(req,res) {
             }
 
             else {
-                console.log(res);
+                let data = JSON.stringify(res.body);
+                res.render('public/success', data);
             }
             return;
         });
@@ -66,13 +63,6 @@ app.get('/authenticated', function(req,res) {
     console.log(req.body);
     res.status(200).send('ok');
 });
-
-app.all('/*', function(req,res) {
-    console.log(req.params);
-    console.log(req.url);
-    console.log(req.body);
-    return;
-}); 
 
 app.listen(PORT, function(err) {
     if (err) {
