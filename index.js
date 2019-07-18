@@ -38,13 +38,13 @@ app.get('/redirect', function(req,res) {
             headers:{"content-type": "application/json"},
             body: body
         };
-        request.post(options, function(err, res) {
+        request.post(options, function(err, response) {
             if (err) {
                 console.log(err);
             }
 
             else {
-                let data = JSON.stringify(res.body);
+                let data = JSON.stringify(response.body);
                 res.render('public/success', data);
             }
             return;
