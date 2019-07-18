@@ -50,7 +50,7 @@ app.get('/redirect', function(req,res) {
                 console.log(token.access_token);
                 const options1 = {
                     url:"https://openidconnect.googleapis.com/v1/userinfo",
-                    headers:{"Authoriztion": "Bearer " + token.access_token} 
+                    headers:{"Authorization": "Bearer " + token.access_token} 
                };
                 request.get(options1, function(err, response1) {
                     if (err) {
