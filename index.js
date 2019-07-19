@@ -15,15 +15,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
 
+/**
+ * This route is called when user hits submit on index.html
+ * It makes a google to google to begin authenticating a user
+ */
 app.get('/google-auth', function(req,res) {
-    console.log("hitting auth flow");
     uuid = uuidv4();
     state = uuidv4();
     const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${config.clientID}&response_type=code&scope=${encodeURIComponent("openid profile email https://www.googleapis.com/auth/drive.file")}&redirect_uri=${encodeURIComponent(config.redirect)}&state=${uuid}&login_hint="test"&nonce=${state}`;
-    console.log(url);
     res.status(200).redirect(url);
 });
 
+/**
+ * Google will redirect a successfully authenticated user to this url
+ * 
+ * The access token is captured as well as the JWT containing user information
+ * The access token is then used to query the open ID endpoint and return additional user info
+ */
 app.get('/redirect', function(req,res) {
     let token = "";
     if (true) {
@@ -73,12 +81,6 @@ app.get('/redirect', function(req,res) {
         return;
     }
     return;
-});
-
-app.get('/authenticated', function(req,res) {
-    console.log(url);
-    console.log(req.body);
-    res.status(200).send('ok');
 });
 
 app.listen(PORT, function(err) {
